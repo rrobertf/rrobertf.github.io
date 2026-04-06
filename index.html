@@ -431,7 +431,7 @@
     const staggerObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
-        const children = entry.target.querySelectorAll('.stagger-child');
+        const children = [...entry.target.children].filter(el => el.classList.contains('stagger-child'));
         children.forEach((child, i) => {
           setTimeout(() => child.classList.add('revealed'), i * 120);
         });
