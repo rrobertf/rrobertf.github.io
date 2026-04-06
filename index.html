@@ -24,14 +24,64 @@
       color: #fff;
     }
     h1, h2, h3 { font-family: 'Playfair Display', serif; }
+
     #navbar.scrolled {
       background: rgba(13,13,26,0.85);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
+
+    .cursor { animation: blink 1s step-end infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+    .project-card {
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .project-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent) !important;
+      box-shadow: 0 8px 32px rgba(124,111,205,0.2);
+    }
+    .tech-badge {
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 500;
+      background: rgba(124,111,205,0.15);
+      color: var(--accent-light);
+      border: 1px solid rgba(124,111,205,0.3);
+    }
+
+    .skill-badge {
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 500;
+      background: var(--bg-card);
+      color: #fff;
+      border: 1px solid var(--border);
+      transition: border-color 0.2s;
+    }
+    .skill-badge:hover { border-color: var(--accent); }
+    .skill-learning {
+      color: var(--accent-light);
+      border-color: rgba(124,111,205,0.4);
+    }
+
+    .fade-section {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
 <body>
+
+  <!-- NAVBAR -->
   <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4 px-6 md:px-16 flex items-center justify-between" aria-label="Main navigation">
     <a href="#hero" class="text-xl font-bold" style="font-family:'Playfair Display',serif; color:var(--accent-light);">RF</a>
     <div class="hidden md:flex gap-8 text-sm font-medium" style="color:var(--text-muted);">
@@ -41,8 +91,206 @@
       <a href="#contacto" class="hover:text-white transition-colors">Contacto</a>
     </div>
   </nav>
-  <!-- secciones aquí -->
+
+  <!-- HERO -->
+  <section id="hero" class="min-h-screen flex flex-col items-center justify-center text-center px-6 relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(124,111,205,0.15) 0%, transparent 70%);"></div>
+    <p class="text-sm font-medium tracking-widest mb-4" style="color:var(--accent-light);">Bienvenido a mi portafolio</p>
+    <h1 class="text-5xl md:text-7xl font-black leading-tight mb-4">Roberto<br/>Feliciano Santiago</h1>
+    <p class="text-xl md:text-2xl mb-10" style="color:var(--text-muted);">
+      <span id="typing"></span><span class="cursor" style="color:var(--accent-light);">|</span>
+    </p>
+    <div class="flex gap-4 flex-wrap justify-center">
+      <a href="#proyectos" class="px-6 py-3 rounded-full font-semibold text-sm transition-all hover:scale-105"
+         style="background:linear-gradient(135deg,var(--accent),var(--accent-light));color:#fff;">
+        Ver Proyectos
+      </a>
+      <a href="#contacto" class="px-6 py-3 rounded-full font-semibold text-sm border transition-all hover:scale-105"
+         style="border-color:var(--accent);color:var(--accent-light);">
+        Contacto
+      </a>
+    </div>
+  </section>
+
+  <!-- SOBRE MÍ -->
+  <section id="sobre-mi" class="py-24 px-6 md:px-16 max-w-5xl mx-auto fade-section">
+    <p class="text-sm font-medium tracking-widest mb-2" style="color:var(--accent-light);">// sobre mí</p>
+    <h2 class="text-4xl font-bold mb-10">¿Quién soy?</h2>
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <p class="text-lg leading-relaxed" style="color:var(--text-muted);">
+        Estudiante de Computer Science de 21 años en la Universidad Interamericana de Puerto Rico, Recinto de Ponce.
+        Me apasiona el desarrollo Full-Stack y tengo interés a largo plazo en Cybersecurity e IA.
+        Aprendo rápido, busco soluciones por mi cuenta y trabajo part-time mientras estudio.
+        Actualmente construyendo proyectos reales para crecer como desarrollador.
+      </p>
+      <div class="grid grid-cols-1 gap-4">
+        <div class="flex items-center gap-4 p-4 rounded-xl" style="background:var(--bg-card);border:1px solid var(--border);">
+          <span class="text-2xl">🎓</span>
+          <div>
+            <p class="font-semibold">UIPR Ponce</p>
+            <p class="text-sm" style="color:var(--text-muted);">Computer Science</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 p-4 rounded-xl" style="background:var(--bg-card);border:1px solid var(--border);">
+          <span class="text-2xl">💻</span>
+          <div>
+            <p class="font-semibold">Full-Stack Development</p>
+            <p class="text-sm" style="color:var(--text-muted);">Pasión principal</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 p-4 rounded-xl" style="background:var(--bg-card);border:1px solid var(--border);">
+          <span class="text-2xl">🔐</span>
+          <div>
+            <p class="font-semibold">Cybersecurity & IA</p>
+            <p class="text-sm" style="color:var(--text-muted);">Interés a largo plazo</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROYECTOS -->
+  <section id="proyectos" class="py-24 px-6 md:px-16 max-w-5xl mx-auto fade-section">
+    <p class="text-sm font-medium tracking-widest mb-2" style="color:var(--accent-light);">// proyectos</p>
+    <h2 class="text-4xl font-bold mb-10">Lo que he construido</h2>
+    <div class="grid md:grid-cols-2 gap-6">
+
+      <div class="project-card p-6 rounded-2xl flex flex-col gap-4" style="background:var(--bg-card);border:1px solid var(--border);">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xl font-bold">Todo App</h3>
+          <a href="https://github.com/rrobertf/todo-api" target="_blank" rel="noopener"
+             class="text-sm px-3 py-1 rounded-full transition-colors hover:text-white"
+             style="color:var(--accent-light);border:1px solid var(--accent);">
+            GitHub ↗
+          </a>
+        </div>
+        <p style="color:var(--text-muted);">API REST con frontend completo. Permite crear, editar y eliminar tareas con persistencia en base de datos.</p>
+        <div class="flex flex-wrap gap-2 mt-auto">
+          <span class="tech-badge">Node.js</span>
+          <span class="tech-badge">Express</span>
+          <span class="tech-badge">SQLite</span>
+          <span class="tech-badge">REST API</span>
+        </div>
+      </div>
+
+      <div class="project-card p-6 rounded-2xl flex flex-col gap-4" style="background:var(--bg-card);border:1px solid var(--border);">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xl font-bold">Organizador de Archivos</h3>
+          <a href="https://github.com/rrobertf/organizador" target="_blank" rel="noopener"
+             class="text-sm px-3 py-1 rounded-full transition-colors hover:text-white"
+             style="color:var(--accent-light);border:1px solid var(--accent);">
+            GitHub ↗
+          </a>
+        </div>
+        <p style="color:var(--text-muted);">Script de automatización que organiza archivos en carpetas por tipo, fecha o extensión.</p>
+        <div class="flex flex-wrap gap-2 mt-auto">
+          <span class="tech-badge">Bash</span>
+          <span class="tech-badge">Shell Script</span>
+          <span class="tech-badge">Terminal</span>
+        </div>
+      </div>
+
+      <div class="project-card p-6 rounded-2xl flex flex-col gap-4" style="background:var(--bg-card);border:1px solid var(--border);">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xl font-bold">Calculadora en C++</h3>
+          <span class="text-sm px-3 py-1 rounded-full" style="color:var(--text-muted);border:1px solid var(--border);">
+            Privado
+          </span>
+        </div>
+        <p style="color:var(--text-muted);">Aplicación de consola con operaciones aritméticas básicas y manejo de errores de entrada.</p>
+        <div class="flex flex-wrap gap-2 mt-auto">
+          <span class="tech-badge">C++</span>
+          <span class="tech-badge">OOP</span>
+        </div>
+      </div>
+
+      <div class="project-card p-6 rounded-2xl flex flex-col gap-4" style="background:var(--bg-card);border:1px solid var(--border);">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xl font-bold">Sitio Web Personal</h3>
+          <span class="text-sm px-3 py-1 rounded-full font-medium" style="color:#f59e0b;border:1px solid #f59e0b;">
+            En progreso
+          </span>
+        </div>
+        <p style="color:var(--text-muted);">Portafolio personal para mostrar proyectos, habilidades y experiencia como desarrollador.</p>
+        <div class="flex flex-wrap gap-2 mt-auto">
+          <span class="tech-badge">HTML</span>
+          <span class="tech-badge">CSS</span>
+          <span class="tech-badge">JavaScript</span>
+          <span class="tech-badge">Tailwind</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HABILIDADES -->
+  <section id="habilidades" class="py-24 px-6 md:px-16 max-w-5xl mx-auto fade-section">
+    <p class="text-sm font-medium tracking-widest mb-2" style="color:var(--accent-light);">// habilidades</p>
+    <h2 class="text-4xl font-bold mb-10">Stack técnico</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div>
+        <h3 class="text-lg font-semibold mb-4" style="color:var(--text-muted);">Lenguajes</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="skill-badge">C++</span>
+          <span class="skill-badge">HTML</span>
+          <span class="skill-badge">CSS</span>
+          <span class="skill-badge skill-learning">JavaScript ✦</span>
+          <span class="skill-badge skill-learning">Node.js ✦</span>
+        </div>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-4" style="color:var(--text-muted);">Herramientas</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="skill-badge skill-learning">Git / GitHub ✦</span>
+          <span class="skill-badge">Terminal / Bash</span>
+          <span class="skill-badge">VS Code</span>
+        </div>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-4" style="color:var(--text-muted);">Bases de datos / APIs</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="skill-badge">SQLite</span>
+          <span class="skill-badge skill-learning">REST APIs ✦</span>
+        </div>
+      </div>
+    </div>
+    <p class="mt-8 text-sm" style="color:var(--text-muted);">
+      <span style="color:var(--accent-light);">✦</span> En aprendizaje activo
+    </p>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="py-24 px-6 md:px-16 max-w-3xl mx-auto text-center fade-section">
+    <p class="text-sm font-medium tracking-widest mb-2" style="color:var(--accent-light);">// contacto</p>
+    <h2 class="text-4xl font-bold mb-4">¿Hablamos?</h2>
+    <p class="text-lg mb-10" style="color:var(--text-muted);">
+      Estoy abierto a oportunidades, colaboraciones y proyectos. No dudes en escribirme.
+    </p>
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+      <div class="flex items-center gap-3 px-6 py-4 rounded-2xl" style="background:var(--bg-card);border:1px solid var(--border);">
+        <span style="color:var(--accent-light);">✉</span>
+        <span class="font-medium">robertofeliciano579@yahoo.com</span>
+        <button id="copy-btn" onclick="copyEmail()" class="text-xs px-3 py-1 rounded-full transition-colors"
+                style="background:rgba(124,111,205,0.2);color:var(--accent-light);">
+          Copiar
+        </button>
+      </div>
+      <a href="https://github.com/rrobertf" target="_blank" rel="noopener"
+         class="flex items-center gap-2 px-6 py-4 rounded-2xl font-medium transition-all hover:scale-105"
+         style="background:var(--bg-card);border:1px solid var(--border);color:var(--accent-light);">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222 0 1.606-.015 2.896-.015 3.286 0 .322.216.694.825.576C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        GitHub
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-8 text-center text-sm" style="color:var(--text-muted);border-top:1px solid var(--border);">
+    Hecho por <span style="color:var(--accent-light);">Roberto Feliciano</span> · 2026
+  </footer>
+
   <script>
+    // Navbar scroll effect
     const navbar = document.getElementById('navbar');
     let ticking = false;
     window.addEventListener('scroll', () => {
@@ -54,6 +302,46 @@
         ticking = true;
       }
     });
+
+    // Typing effect
+    const phrases = ['Computer Science Student', 'Aspiring Full-Stack Developer', 'Future Cybersecurity Engineer'];
+    let phraseIndex = 0, charIndex = 0, deleting = false;
+    const typingEl = document.getElementById('typing');
+
+    function type() {
+      const current = phrases[phraseIndex];
+      typingEl.textContent = deleting ? current.substring(0, charIndex--) : current.substring(0, charIndex++);
+      if (!deleting && charIndex === current.length + 1) {
+        setTimeout(() => { deleting = true; type(); }, 2000);
+        return;
+      }
+      if (deleting && charIndex === 0) {
+        deleting = false;
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+      }
+      setTimeout(type, deleting ? 50 : 80);
+    }
+    type();
+
+    // Copy email
+    function copyEmail() {
+      navigator.clipboard.writeText('robertofeliciano579@yahoo.com');
+      const btn = document.getElementById('copy-btn');
+      btn.textContent = '¡Copiado!';
+      setTimeout(() => { btn.textContent = 'Copiar'; }, 2000);
+    }
+
+    // Scroll fade-in animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-section').forEach(el => observer.observe(el));
   </script>
 </body>
 </html>
