@@ -27,9 +27,29 @@
   </style>
 </head>
 <body>
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4 px-6 md:px-16 flex items-center justify-between">
+    <a href="#hero" class="text-xl font-bold" style="font-family:'Playfair Display',serif; color:var(--accent-light);">RF</a>
+    <div class="hidden md:flex gap-8 text-sm font-medium" style="color:var(--text-muted);">
+      <a href="#sobre-mi" class="hover:text-white transition-colors">Sobre mí</a>
+      <a href="#proyectos" class="hover:text-white transition-colors">Proyectos</a>
+      <a href="#habilidades" class="hover:text-white transition-colors">Habilidades</a>
+      <a href="#contacto" class="hover:text-white transition-colors">Contacto</a>
+    </div>
+  </nav>
   <!-- secciones aquí -->
   <script>
-    // JS aquí
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 20) {
+        navbar.style.background = 'rgba(13,13,26,0.85)';
+        navbar.style.backdropFilter = 'blur(12px)';
+        navbar.style.borderBottom = '1px solid var(--border)';
+      } else {
+        navbar.style.background = 'transparent';
+        navbar.style.backdropFilter = 'none';
+        navbar.style.borderBottom = 'none';
+      }
+    });
   </script>
 </body>
 </html>
