@@ -37,13 +37,58 @@
     .cursor { animation: blink 1s step-end infinite; }
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
 
+    /* Project cards */
     .project-card {
-      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      position: relative;
+      border-radius: 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .project-card::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: 17px;
+      background: conic-gradient(
+        from var(--angle, 0deg),
+        transparent 60%,
+        rgba(124, 111, 205, 0.85) 75%,
+        rgba(167, 139, 250, 0.6) 85%,
+        transparent 95%
+      );
+      opacity: 0;
+      z-index: -1;
+      transition: opacity 0.3s ease;
+      animation: card-spin 3s linear infinite paused;
+    }
+    .project-card:hover::before {
+      opacity: 1;
+      animation-play-state: running;
     }
     .project-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--accent) !important;
-      box-shadow: 0 8px 32px rgba(124,111,205,0.2);
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(124, 111, 205, 0.2);
+    }
+    @property --angle {
+      syntax: '<angle>';
+      initial-value: 0deg;
+      inherits: false;
+    }
+    @keyframes card-spin {
+      to { --angle: 360deg; }
+    }
+    .project-card-inner {
+      position: relative;
+      background: var(--bg-card);
+      border-radius: 15px;
+      padding: 24px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
     }
     .tech-badge {
       padding: 3px 10px;
@@ -53,6 +98,9 @@
       background: rgba(124,111,205,0.15);
       color: var(--accent-light);
       border: 1px solid rgba(124,111,205,0.3);
+    }
+    .tech-badge:hover {
+      box-shadow: 0 0 10px rgba(124, 111, 205, 0.45);
     }
 
     .skill-badge {
@@ -250,68 +298,88 @@
     <h2 style="font-size:clamp(32px,5vw,48px);font-weight:700;letter-spacing:-1px;" class="stagger-child mb-10">Lo que he construido</h2>
     <div class="stagger-child grid md:grid-cols-2 gap-6">
 
-      <div class="project-card p-6 rounded-2xl flex flex-col gap-4" style="background:var(--bg-card);border:1px solid var(--border);">
-        <div class="flex items-center justify-between">
-          <h3 class="text-xl font-bold">Todo App</h3>
-          <a href="https://github.com/rrobertf/todo-api" target="_blank" rel="noopener"
-             class="text-sm px-3 py-1 rounded-full transition-colors hover:text-white"
-             style="color:var(--accent-light);border:1px solid var(--accent);">
-            GitHub ↗
-          </a>
-        </div>
-        <p style="color:var(--text-muted);">API REST con frontend completo. Permite crear, editar y eliminar tareas con persistencia en base de datos.</p>
-        <div class="flex flex-wrap gap-2 mt-auto">
-          <span class="tech-badge">Node.js</span>
-          <span class="tech-badge">Express</span>
-          <span class="tech-badge">SQLite</span>
-          <span class="tech-badge">REST API</span>
-        </div>
-      </div>
-
-      <div class="project-card p-6 rounded-2xl flex flex-col gap-4" style="background:var(--bg-card);border:1px solid var(--border);">
-        <div class="flex items-center justify-between">
-          <h3 class="text-xl font-bold">Organizador de Archivos</h3>
-          <a href="https://github.com/rrobertf/organizador" target="_blank" rel="noopener"
-             class="text-sm px-3 py-1 rounded-full transition-colors hover:text-white"
-             style="color:var(--accent-light);border:1px solid var(--accent);">
-            GitHub ↗
-          </a>
-        </div>
-        <p style="color:var(--text-muted);">Script de automatización que organiza archivos en carpetas por tipo, fecha o extensión.</p>
-        <div class="flex flex-wrap gap-2 mt-auto">
-          <span class="tech-badge">Bash</span>
-          <span class="tech-badge">Shell Script</span>
-          <span class="tech-badge">Terminal</span>
+      <div class="project-card flex flex-col">
+        <div class="project-card-inner">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="text-xl">📦</span>
+              <h3 class="text-xl font-bold">Todo App</h3>
+            </div>
+            <a href="https://github.com/rrobertf/todo-api" target="_blank" rel="noopener"
+               class="text-sm px-3 py-1 rounded-full transition-colors hover:text-white"
+               style="color:var(--accent-light);border:1px solid var(--accent);">
+              GitHub ↗
+            </a>
+          </div>
+          <p style="color:var(--text-muted);">API REST con frontend completo. Permite crear, editar y eliminar tareas con persistencia en base de datos.</p>
+          <div class="flex flex-wrap gap-2 mt-auto">
+            <span class="tech-badge">Node.js</span>
+            <span class="tech-badge">Express</span>
+            <span class="tech-badge">SQLite</span>
+            <span class="tech-badge">REST API</span>
+          </div>
         </div>
       </div>
 
-      <div class="project-card p-6 rounded-2xl flex flex-col gap-4" style="background:var(--bg-card);border:1px solid var(--border);">
-        <div class="flex items-center justify-between">
-          <h3 class="text-xl font-bold">Calculadora en C++</h3>
-          <span class="text-sm px-3 py-1 rounded-full" style="color:var(--text-muted);border:1px solid var(--border);">
-            Privado
-          </span>
-        </div>
-        <p style="color:var(--text-muted);">Aplicación de consola con operaciones aritméticas básicas y manejo de errores de entrada.</p>
-        <div class="flex flex-wrap gap-2 mt-auto">
-          <span class="tech-badge">C++</span>
-          <span class="tech-badge">OOP</span>
+      <div class="project-card flex flex-col">
+        <div class="project-card-inner">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="text-xl">⚙️</span>
+              <h3 class="text-xl font-bold">Organizador de Archivos</h3>
+            </div>
+            <a href="https://github.com/rrobertf/organizador" target="_blank" rel="noopener"
+               class="text-sm px-3 py-1 rounded-full transition-colors hover:text-white"
+               style="color:var(--accent-light);border:1px solid var(--accent);">
+              GitHub ↗
+            </a>
+          </div>
+          <p style="color:var(--text-muted);">Script de automatización que organiza archivos en carpetas por tipo, fecha o extensión.</p>
+          <div class="flex flex-wrap gap-2 mt-auto">
+            <span class="tech-badge">Bash</span>
+            <span class="tech-badge">Shell Script</span>
+            <span class="tech-badge">Terminal</span>
+          </div>
         </div>
       </div>
 
-      <div class="project-card p-6 rounded-2xl flex flex-col gap-4" style="background:var(--bg-card);border:1px solid var(--border);">
-        <div class="flex items-center justify-between">
-          <h3 class="text-xl font-bold">Sitio Web Personal</h3>
-          <span class="text-sm px-3 py-1 rounded-full font-medium" style="color:#f59e0b;border:1px solid #f59e0b;">
-            En progreso
-          </span>
+      <div class="project-card flex flex-col">
+        <div class="project-card-inner">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="text-xl">🧮</span>
+              <h3 class="text-xl font-bold">Calculadora en C++</h3>
+            </div>
+            <span class="text-sm px-3 py-1 rounded-full" style="color:var(--text-muted);border:1px solid var(--border);">
+              Privado
+            </span>
+          </div>
+          <p style="color:var(--text-muted);">Aplicación de consola con operaciones aritméticas básicas y manejo de errores de entrada.</p>
+          <div class="flex flex-wrap gap-2 mt-auto">
+            <span class="tech-badge">C++</span>
+            <span class="tech-badge">OOP</span>
+          </div>
         </div>
-        <p style="color:var(--text-muted);">Portafolio personal para mostrar proyectos, habilidades y experiencia como desarrollador.</p>
-        <div class="flex flex-wrap gap-2 mt-auto">
-          <span class="tech-badge">HTML</span>
-          <span class="tech-badge">CSS</span>
-          <span class="tech-badge">JavaScript</span>
-          <span class="tech-badge">Tailwind</span>
+      </div>
+
+      <div class="project-card flex flex-col">
+        <div class="project-card-inner">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="text-xl">🌐</span>
+              <h3 class="text-xl font-bold">Sitio Web Personal</h3>
+            </div>
+            <span class="text-sm px-3 py-1 rounded-full font-medium" style="color:#f59e0b;border:1px solid #f59e0b;">
+              En progreso
+            </span>
+          </div>
+          <p style="color:var(--text-muted);">Portafolio personal para mostrar proyectos, habilidades y experiencia como desarrollador.</p>
+          <div class="flex flex-wrap gap-2 mt-auto">
+            <span class="tech-badge">HTML</span>
+            <span class="tech-badge">CSS</span>
+            <span class="tech-badge">JavaScript</span>
+            <span class="tech-badge">Tailwind</span>
+          </div>
         </div>
       </div>
 
