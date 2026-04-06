@@ -134,14 +134,19 @@
       z-index: 1;
     }
 
-    .fade-section {
+    /* Scroll stagger reveal */
+    .stagger-child {
       opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
+      transform: translateY(22px);
+      transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .fade-section.visible {
+    .stagger-child.revealed {
       opacity: 1;
       transform: translateY(0);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .stagger-child { opacity: 1; transform: none; transition: none; }
     }
 
     /* Hero stagger entrance */
@@ -203,10 +208,10 @@
   </section>
 
   <!-- SOBRE MÍ -->
-  <section id="sobre-mi" class="py-24 px-6 md:px-16 max-w-5xl mx-auto fade-section">
-    <p class="text-sm font-medium tracking-widest mb-2" style="color:var(--accent-light);">// sobre mí</p>
-    <h2 style="font-size:clamp(32px,5vw,48px);font-weight:700;letter-spacing:-1px;" class="mb-10">¿Quién soy?</h2>
-    <div class="grid md:grid-cols-2 gap-12 items-center">
+  <section id="sobre-mi" data-stagger class="py-24 px-6 md:px-16 max-w-5xl mx-auto">
+    <p class="stagger-child text-sm font-medium tracking-widest mb-2" style="color:var(--accent-light);">// sobre mí</p>
+    <h2 style="font-size:clamp(32px,5vw,48px);font-weight:700;letter-spacing:-1px;" class="stagger-child mb-10">¿Quién soy?</h2>
+    <div class="stagger-child grid md:grid-cols-2 gap-12 items-center">
       <p class="text-lg leading-relaxed" style="color:var(--text-muted);">
         Estudiante de Computer Science de 21 años en la Universidad Interamericana de Puerto Rico, Recinto de Ponce.
         Me apasiona el desarrollo Full-Stack y tengo interés a largo plazo en Cybersecurity e IA.
@@ -240,10 +245,10 @@
   </section>
 
   <!-- PROYECTOS -->
-  <section id="proyectos" class="py-24 px-6 md:px-16 max-w-5xl mx-auto fade-section">
-    <p class="text-sm font-medium tracking-widest mb-2" style="color:var(--accent-light);">// proyectos</p>
-    <h2 style="font-size:clamp(32px,5vw,48px);font-weight:700;letter-spacing:-1px;" class="mb-10">Lo que he construido</h2>
-    <div class="grid md:grid-cols-2 gap-6">
+  <section id="proyectos" data-stagger class="py-24 px-6 md:px-16 max-w-5xl mx-auto">
+    <p class="stagger-child text-sm font-medium tracking-widest mb-2" style="color:var(--accent-light);">// proyectos</p>
+    <h2 style="font-size:clamp(32px,5vw,48px);font-weight:700;letter-spacing:-1px;" class="stagger-child mb-10">Lo que he construido</h2>
+    <div class="stagger-child grid md:grid-cols-2 gap-6">
 
       <div class="project-card p-6 rounded-2xl flex flex-col gap-4" style="background:var(--bg-card);border:1px solid var(--border);">
         <div class="flex items-center justify-between">
@@ -314,10 +319,10 @@
   </section>
 
   <!-- HABILIDADES -->
-  <section id="habilidades" class="py-24 px-6 md:px-16 max-w-5xl mx-auto fade-section">
-    <p class="text-sm font-medium tracking-widest mb-2" style="color:var(--accent-light);">// habilidades</p>
-    <h2 style="font-size:clamp(32px,5vw,48px);font-weight:700;letter-spacing:-1px;" class="mb-10">Stack técnico</h2>
-    <div class="grid md:grid-cols-3 gap-8">
+  <section id="habilidades" data-stagger class="py-24 px-6 md:px-16 max-w-5xl mx-auto">
+    <p class="stagger-child text-sm font-medium tracking-widest mb-2" style="color:var(--accent-light);">// habilidades</p>
+    <h2 style="font-size:clamp(32px,5vw,48px);font-weight:700;letter-spacing:-1px;" class="stagger-child mb-10">Stack técnico</h2>
+    <div class="stagger-child grid md:grid-cols-3 gap-8">
       <div>
         <h3 class="text-lg font-semibold mb-4" style="color:var(--text-muted);">Lenguajes</h3>
         <div class="flex flex-wrap gap-2">
@@ -344,19 +349,19 @@
         </div>
       </div>
     </div>
-    <p class="mt-8 text-sm" style="color:var(--text-muted);">
+    <p class="stagger-child mt-8 text-sm" style="color:var(--text-muted);">
       <span style="color:var(--accent-light);">✦</span> En aprendizaje activo
     </p>
   </section>
 
   <!-- CONTACTO -->
-  <section id="contacto" class="py-24 px-6 md:px-16 max-w-3xl mx-auto text-center fade-section">
-    <p class="text-sm font-medium tracking-widest mb-2" style="color:var(--accent-light);">// contacto</p>
-    <h2 style="font-size:clamp(32px,5vw,48px);font-weight:700;letter-spacing:-1px;" class="mb-4">¿Hablamos?</h2>
-    <p class="text-lg mb-10" style="color:var(--text-muted);">
+  <section id="contacto" data-stagger class="py-24 px-6 md:px-16 max-w-3xl mx-auto text-center">
+    <p class="stagger-child text-sm font-medium tracking-widest mb-2" style="color:var(--accent-light);">// contacto</p>
+    <h2 style="font-size:clamp(32px,5vw,48px);font-weight:700;letter-spacing:-1px;" class="stagger-child mb-4">¿Hablamos?</h2>
+    <p class="stagger-child text-lg mb-10" style="color:var(--text-muted);">
       Estoy abierto a oportunidades, colaboraciones y proyectos. No dudes en escribirme.
     </p>
-    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+    <div class="stagger-child flex flex-col sm:flex-row items-center justify-center gap-4">
       <div class="flex items-center gap-3 px-6 py-4 rounded-2xl" style="background:var(--bg-card);border:1px solid var(--border);">
         <span style="color:var(--accent-light);">✉</span>
         <span class="font-medium">robertofeliciano579@yahoo.com</span>
@@ -422,17 +427,19 @@
       setTimeout(() => { btn.textContent = 'Copiar'; }, 2000);
     }
 
-    // Scroll fade-in animations
-    const observer = new IntersectionObserver((entries) => {
+    // Stagger scroll reveal
+    const staggerObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
+        if (!entry.isIntersecting) return;
+        const children = entry.target.querySelectorAll('.stagger-child');
+        children.forEach((child, i) => {
+          setTimeout(() => child.classList.add('revealed'), i * 120);
+        });
+        staggerObserver.unobserve(entry.target);
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.08 });
 
-    document.querySelectorAll('.fade-section').forEach(el => observer.observe(el));
+    document.querySelectorAll('[data-stagger]').forEach(el => staggerObserver.observe(el));
   </script>
 </body>
 </html>
