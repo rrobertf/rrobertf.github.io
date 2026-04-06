@@ -143,6 +143,20 @@
       opacity: 1;
       transform: translateY(0);
     }
+
+    /* Hero stagger entrance */
+    .hero-item {
+      opacity: 0;
+      transform: translateY(18px);
+      animation: hero-fade-up 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .hero-item:nth-child(2) { animation-delay: 0.1s; }
+    .hero-item:nth-child(3) { animation-delay: 0.25s; }
+    .hero-item:nth-child(4) { animation-delay: 0.4s; }
+    .hero-item:nth-child(5) { animation-delay: 0.58s; }
+    @keyframes hero-fade-up {
+      to { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
 <body>
@@ -168,13 +182,13 @@
   <!-- HERO -->
   <section id="hero" class="min-h-screen flex flex-col items-center justify-center text-center px-6 relative overflow-hidden">
     <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(124,111,205,0.15) 0%, transparent 70%);"></div>
-    <p class="text-sm font-medium tracking-widest mb-4" style="color:var(--accent-light);">Bienvenido a mi portafolio</p>
-    <h1 style="font-size:clamp(48px,8vw,80px);font-weight:800;letter-spacing:-2px;line-height:1.05;" class="mb-4">Roberto<br/>Feliciano Santiago</h1>
-    <p class="text-xl md:text-2xl mb-10" style="color:var(--text-muted);">
+    <p class="hero-item text-sm font-medium tracking-widest mb-4" style="color:var(--accent-light);">Bienvenido a mi portafolio</p>
+    <h1 class="hero-item mb-4" style="font-size:clamp(48px,8vw,80px);font-weight:800;letter-spacing:-2px;line-height:1.05;">Roberto<br/>Feliciano Santiago</h1>
+    <p class="hero-item text-xl md:text-2xl mb-10" style="color:var(--text-muted);">
       <span id="typing"></span><span class="cursor" style="color:var(--accent-light);">|</span>
     </p>
-    <div class="flex gap-4 flex-wrap justify-center">
-      <a href="#proyectos" class="px-6 py-3 rounded-full font-semibold text-sm transition-all hover:scale-105"
+    <div class="hero-item flex gap-4 flex-wrap justify-center">
+      <a href="#proyectos" class="btn-primary px-6 py-3 rounded-full font-semibold text-sm transition-all hover:scale-105"
          style="background:linear-gradient(135deg,var(--accent),var(--accent-light));color:#fff;">
         Ver Proyectos
       </a>
@@ -394,7 +408,8 @@
       }
       setTimeout(type, deleting ? 50 : 80);
     }
-    type();
+    // Delay typing start until hero item 4 animation completes
+    setTimeout(type, 550);
 
     // Copy email
     function copyEmail() {
