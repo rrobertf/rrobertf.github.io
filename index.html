@@ -404,9 +404,10 @@ body {
 </section>
 
   <!-- FOOTER -->
-  <footer class="py-8 text-center text-sm" style="color:var(--text-muted);border-top:1px solid var(--border);">
-    Hecho por <span style="color:var(--accent-light);">Roberto Feliciano</span> · 2026
-  </footer>
+  <footer class="py-8 px-6 md:px-16 flex items-center justify-between text-xs tracking-widest" style="border-top:1px solid var(--border);color:#2a2a2a;">
+  <span>Roberto Feliciano · 2026</span>
+  <span style="width:6px;height:6px;border-radius:50%;background:var(--ac);display:inline-block;animation:dot-blink 2s ease-in-out infinite;"></span>
+</footer>
 
   <script>
     // Navbar scroll effect
@@ -445,7 +446,7 @@ body {
 
     // Copy email
     function copyEmail() {
-      navigator.clipboard.writeText('robertofeliciano579@yahoo.com');
+      navigator.clipboard.writeText('robertofeliciano2130@gmail.com');
       const btn = document.getElementById('copy-btn');
       btn.textContent = '¡Copiado!';
       setTimeout(() => { btn.textContent = 'Copiar'; }, 2000);
