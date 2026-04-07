@@ -157,22 +157,50 @@ body {
   </nav>
 
   <!-- HERO -->
-  <section id="hero" class="min-h-screen flex flex-col items-center justify-center text-center px-6 relative overflow-hidden">
-    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(124,111,205,0.15) 0%, transparent 70%);"></div>
-    <p class="hero-item text-sm font-medium tracking-widest mb-4" style="color:var(--accent-light);">Bienvenido a mi portafolio</p>
-    <h1 class="hero-item mb-4" style="font-size:clamp(48px,8vw,80px);font-weight:800;letter-spacing:-2px;line-height:1.05;">Roberto<br/>Feliciano Santiago</h1>
-    <p class="hero-item text-xl md:text-2xl mb-10" style="color:var(--text-muted);">
-      <span id="typing"></span><span class="cursor" style="color:var(--accent-light);">|</span>
-    </p>
-    <div class="hero-item flex gap-4 flex-wrap justify-center">
-      <a href="#proyectos" class="btn-primary px-6 py-3 rounded-full font-semibold text-sm transition-all hover:scale-105"
-         style="background:linear-gradient(135deg,var(--accent),var(--accent-light));color:#fff;">
-        Ver Proyectos
-      </a>
-      <a href="#contacto" class="px-6 py-3 rounded-full font-semibold text-sm border transition-all hover:scale-105"
-         style="border-color:var(--accent);color:var(--accent-light);">
-        Contacto
-      </a>
+  <section id="hero" class="relative min-h-screen flex flex-col justify-between overflow-hidden px-6 md:px-16 pt-32 pb-16">
+
+    <!-- grid animado -->
+    <div class="cyber-grid"></div>
+
+    <!-- glow dots flotantes -->
+    <div class="absolute pointer-events-none" style="width:320px;height:320px;top:-80px;right:-60px;background:radial-gradient(circle,rgba(57,255,133,.1) 0%,transparent 70%);animation:dot-float 6s ease-in-out infinite alternate;"></div>
+    <div class="absolute pointer-events-none" style="width:180px;height:180px;bottom:-40px;left:10%;background:radial-gradient(circle,rgba(57,255,133,.06) 0%,transparent 70%);animation:dot-float-r 9s ease-in-out infinite alternate;"></div>
+
+    <!-- scan line -->
+    <div class="absolute top-0 left-0 right-0 pointer-events-none" style="height:2px;background:linear-gradient(90deg,transparent,var(--ac) 40%,transparent);animation:scan 5s ease-in-out infinite;opacity:.6;"></div>
+
+    <!-- contador -->
+    <div class="absolute top-20 right-6 md:right-16 text-xs tracking-widest pointer-events-none" style="color:#2a2a2a;animation:c-tick 3s ease-in-out infinite alternate;font-variant-numeric:tabular-nums;">001 / PORTFOLIO</div>
+
+    <!-- contenido -->
+    <div class="relative flex flex-col justify-between flex-1 gap-12 max-w-5xl mx-auto w-full">
+
+      <!-- top: eyebrow + nombre -->
+      <div>
+        <p class="hero-item eyebrow mb-6">Bienvenido a mi portafolio</p>
+        <h1 class="hero-item font-black uppercase leading-none" style="font-size:clamp(48px,9vw,88px);letter-spacing:-3px;">
+          Roberto<br/>
+          <span style="color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,0.2);">Feliciano</span>
+        </h1>
+      </div>
+
+      <!-- bottom: rol + botones -->
+      <div class="hero-item flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6 border-t pt-8" style="border-color:var(--border);">
+        <p class="text-xs tracking-widest uppercase leading-loose" style="color:var(--muted);">
+          CS Student · UIPR Ponce<br/>
+          Full-Stack Developer<br/>
+          Cybersecurity &amp; IA
+        </p>
+        <div class="flex gap-3">
+          <a href="#contacto" class="text-xs font-semibold tracking-widest uppercase px-5 py-3 rounded-md transition-colors" style="border:1px solid #252525;color:#444;animation:ghost-flicker 6s ease-in-out infinite;">
+            Contacto
+          </a>
+          <a href="#proyectos" class="text-xs font-black tracking-widest uppercase px-5 py-3 rounded-md" style="background:var(--ac);color:#000;animation:btn-glow 4s ease-in-out infinite;">
+            Ver proyectos
+          </a>
+        </div>
+      </div>
+
     </div>
   </section>
 
