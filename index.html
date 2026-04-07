@@ -164,6 +164,8 @@ nav, section, footer { position: relative; z-index: 1; }
 .proj-card:nth-child(2){ animation-delay:1.2s }
 .proj-card:nth-child(3){ animation-delay:2.4s }
 .proj-card:nth-child(4){ animation-delay:3.6s }
+.proj-card:nth-child(5){ animation-delay:4.8s }
+.proj-card:nth-child(6){ animation-delay:6s }
 .proj-card::before {
   content:''; position:absolute; top:0; left:0; right:0; height:1px;
   background: linear-gradient(90deg, transparent, rgba(57,255,133,.08), transparent);
@@ -478,6 +480,31 @@ nav, section, footer { position: relative; z-index: 1; }
         <span class="proj-tag">Tailwind</span>
       </div>
       <a href="https://rrobertf.github.io/" target="_blank" rel="noopener" class="text-xs tracking-widest uppercase transition-colors hover:text-white mt-3 inline-block" style="color:var(--ac);">Ver sitio ↗</a>
+    </div>
+
+    <div class="proj-card">
+      <div class="flex items-center justify-between">
+        <span class="proj-num">005</span>
+        <a href="https://github.com/rrobertf/generador-contrasenas" target="_blank" rel="noopener" class="text-xs tracking-widest uppercase transition-colors hover:text-white" style="color:var(--ac);">GitHub ↗</a>
+      </div>
+      <h3 class="text-base font-bold">Generador de Contraseñas</h3>
+      <p class="text-xs leading-relaxed" style="color:#fff;">Genera contraseñas seguras con opciones de longitud, números y símbolos.</p>
+      <div class="flex flex-wrap gap-2 mt-auto">
+        <span class="proj-tag">Python</span>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="flex items-center justify-between">
+        <span class="proj-num">006</span>
+        <a href="https://github.com/rrobertf/web-scraper" target="_blank" rel="noopener" class="text-xs tracking-widest uppercase transition-colors hover:text-white" style="color:var(--ac);">GitHub ↗</a>
+      </div>
+      <h3 class="text-base font-bold">Web Scraper de Noticias</h3>
+      <p class="text-xs leading-relaxed" style="color:#fff;">Extrae las 20 noticias principales de Hacker News y las guarda en archivo.</p>
+      <div class="flex flex-wrap gap-2 mt-auto">
+        <span class="proj-tag">Python</span>
+        <span class="proj-tag">BeautifulSoup</span>
+      </div>
     </div>
 
   </div>
