@@ -32,6 +32,74 @@ body {
   border-bottom: 1px solid var(--border);
 }
 
+/* ── Background layer fijo ── */
+.bg-layer {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden;
+}
+.bg-orb {
+  position: absolute; border-radius: 50%;
+  filter: blur(80px); will-change: transform;
+}
+.bg-orb--1 {
+  width: 600px; height: 600px; top: -200px; left: -150px;
+  background: radial-gradient(circle, rgba(57,255,133,0.07) 0%, transparent 70%);
+  animation: orb-a 12s ease-in-out infinite;
+}
+.bg-orb--2 {
+  width: 500px; height: 500px; bottom: 10%; right: -100px;
+  background: radial-gradient(circle, rgba(57,255,133,0.05) 0%, transparent 70%);
+  animation: orb-b 16s ease-in-out infinite;
+}
+.bg-orb--3 {
+  width: 350px; height: 350px; top: 45%; left: 30%;
+  background: radial-gradient(circle, rgba(57,255,133,0.04) 0%, transparent 70%);
+  animation: orb-c 20s ease-in-out infinite;
+}
+@keyframes orb-a {
+  0%,100% { transform: translate(0,0) scale(1); }
+  33%      { transform: translate(40px,-30px) scale(1.05); }
+  66%      { transform: translate(-20px,40px) scale(0.95); }
+}
+@keyframes orb-b {
+  0%,100% { transform: translate(0,0) scale(1); }
+  40%      { transform: translate(-35px,-25px) scale(1.08); }
+  70%      { transform: translate(25px,30px) scale(0.92); }
+}
+@keyframes orb-c {
+  0%,100% { transform: translate(0,0); }
+  50%      { transform: translate(30px,-40px); }
+}
+
+/* líneas diagonales decorativas (fixed, detrás de todo) */
+.bg-lines {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; opacity: .35;
+}
+.bg-lines::before, .bg-lines::after {
+  content: '';
+  position: absolute;
+  width: 1px; height: 140%;
+  background: linear-gradient(180deg, transparent, rgba(57,255,133,.25) 40%, rgba(57,255,133,.1) 60%, transparent);
+  top: -20%;
+}
+.bg-lines::before {
+  left: 22%;
+  animation: line-drift 14s ease-in-out infinite alternate;
+}
+.bg-lines::after {
+  right: 22%;
+  animation: line-drift 18s ease-in-out infinite alternate-reverse;
+}
+@keyframes line-drift {
+  0%   { opacity: .2; transform: skewX(-2deg) translateY(0); }
+  100% { opacity: .5; transform: skewX(2deg) translateY(-20px); }
+}
+
+nav, section, footer { position: relative; z-index: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .bg-orb, .bg-lines::before, .bg-lines::after { animation: none; }
+}
+
 /* ── Animaciones globales ── */
 @keyframes grid-breathe { 0%{opacity:.3} 100%{opacity:1} }
 @keyframes dot-float    { 0%{transform:translate(0,0)} 100%{transform:translate(-20px,20px)} }
@@ -144,6 +212,14 @@ body {
   </style>
 </head>
 <body>
+
+  <!-- BACKGROUND LAYER (fixed, z-0) -->
+  <div class="bg-layer" aria-hidden="true">
+    <div class="bg-orb bg-orb--1"></div>
+    <div class="bg-orb bg-orb--2"></div>
+    <div class="bg-orb bg-orb--3"></div>
+  </div>
+  <div class="bg-lines" aria-hidden="true"></div>
 
   <!-- NAVBAR -->
   <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4 px-6 md:px-16 flex items-center justify-between" aria-label="Main navigation">
