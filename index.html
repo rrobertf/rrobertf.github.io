@@ -9,239 +9,138 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300..800;1,14..32,300..800&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --bg: #0a0a18;
-      --bg-card: #111127;
-      --accent: #7c6fcd;
-      --accent-light: #a78bfa;
-      --border: #1e1e3a;
-      --text-muted: #94a3b8;
-      --font: 'Inter', system-ui, sans-serif;
-    }
-    * { scroll-behavior: smooth; box-sizing: border-box; }
-    body {
-      background-color: var(--bg);
-      font-family: var(--font);
-      font-feature-settings: "cv11", "ss01";
-      color: #fff;
-      overflow-x: hidden;
-    }
-    h1, h2, h3 { font-family: var(--font); }
+:root {
+  --bg:     #0c0c0c;
+  --bg2:    #0f0f0f;
+  --ac:     #39ff85;
+  --border: #1e1e1e;
+  --muted:  #3a3a3a;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+* { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #fff;
+  overflow-x: hidden;
+}
 
-    #navbar.scrolled {
-      background: rgba(10,10,24,0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
+/* ── Navbar ── */
+#navbar.scrolled {
+  background: rgba(12,12,12,0.88);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}
 
-    .cursor { animation: blink 1s step-end infinite; }
-    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+/* ── Animaciones globales ── */
+@keyframes grid-breathe { 0%{opacity:.3} 100%{opacity:1} }
+@keyframes dot-float    { 0%{transform:translate(0,0)} 100%{transform:translate(-20px,20px)} }
+@keyframes dot-float-r  { 0%{transform:translate(0,0)} 100%{transform:translate(16px,-16px)} }
+@keyframes scan         { 0%,100%{opacity:.2;transform:scaleX(.4)} 50%{opacity:.7;transform:scaleX(1)} }
+@keyframes ey-pulse     { 0%{opacity:.5} 100%{opacity:1} }
+@keyframes c-tick       { 0%{color:#1e1e1e} 100%{color:#353535} }
+@keyframes btn-glow     { 0%,100%{box-shadow:0 0 0 transparent} 50%{box-shadow:0 0 22px rgba(57,255,133,.35)} }
+@keyframes ghost-flicker{ 0%,85%,100%{border-color:#252525;color:#444} 90%{border-color:#444;color:#666} }
+@keyframes card-flicker { 0%,85%,100%{border-color:var(--border)} 91%{border-color:rgba(57,255,133,.35)} }
+@keyframes dot-blink    { 0%,100%{opacity:.3} 50%{opacity:1} }
+@keyframes hero-up      { to{opacity:1;transform:translateY(0)} }
 
-    /* Project cards */
-    .project-card {
-      position: relative;
-      border-radius: 16px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-      z-index: 0;
-      overflow: hidden;
-    }
-    .project-card::before {
-      content: '';
-      position: absolute;
-      inset: -1px;
-      border-radius: 17px;
-      background: conic-gradient(
-        from var(--angle, 0deg),
-        transparent 60%,
-        rgba(124, 111, 205, 0.85) 75%,
-        rgba(167, 139, 250, 0.6) 85%,
-        transparent 95%
-      );
-      opacity: 0;
-      z-index: -1;
-      transition: opacity 0.3s ease;
-      animation: card-spin 3s linear infinite paused;
-    }
-    .project-card:hover::before {
-      opacity: 1;
-      animation-play-state: running;
-    }
-    .project-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 40px rgba(124, 111, 205, 0.2);
-    }
-    @property --angle {
-      syntax: '<angle>';
-      initial-value: 0deg;
-      inherits: false;
-    }
-    @keyframes card-spin {
-      to { --angle: 360deg; }
-    }
-    .project-card-inner {
-      position: relative;
-      background: var(--bg-card);
-      border-radius: 15px;
-      padding: 24px;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .tech-badge {
-      padding: 3px 10px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 500;
-      background: rgba(124,111,205,0.15);
-      color: var(--accent-light);
-      border: 1px solid rgba(124,111,205,0.3);
-      transition: box-shadow 0.2s ease;
-    }
-    .tech-badge:hover {
-      box-shadow: 0 0 10px rgba(124, 111, 205, 0.45);
-    }
+/* ── Grid de fondo (reutilizable) ── */
+.cyber-grid {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(57,255,133,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(57,255,133,.04) 1px, transparent 1px);
+  background-size: 36px 36px;
+  animation: grid-breathe 7s ease-in-out infinite alternate;
+}
+.cyber-grid--dim {
+  background-image:
+    linear-gradient(rgba(57,255,133,.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(57,255,133,.02) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
 
-    .skill-badge {
-      padding: 6px 14px;
-      border-radius: 999px;
-      font-size: 13px;
-      font-weight: 500;
-      background: var(--bg-card);
-      color: #fff;
-      border: 1px solid var(--border);
-      transition: border-color 0.2s;
-    }
-    .skill-badge:hover { border-color: var(--accent); }
-    .skill-learning {
-      color: var(--accent-light);
-      border-color: rgba(124,111,205,0.4);
-    }
+/* ── Eyebrow label verde ── */
+.eyebrow {
+  font-size: 9px; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--ac); display: flex; align-items: center; gap: 10px;
+  animation: ey-pulse 3s ease-in-out infinite alternate;
+}
+.eyebrow::before { content:''; width:20px; height:1px; background:var(--ac); display:inline-block; }
 
-    /* Aurora background */
-    .aurora {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      overflow: hidden;
-    }
-    .aurora::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-      opacity: 0.032;
-      mix-blend-mode: screen;
-    }
-    .aurora-blob {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(80px);
-      will-change: transform;
-    }
-    .aurora-blob--1 {
-      width: 700px; height: 700px;
-      top: -200px; left: -150px;
-      background: radial-gradient(circle, rgba(124,111,205,0.22) 0%, transparent 70%);
-      animation: aurora-float-a 9s ease-in-out infinite;
-    }
-    .aurora-blob--2 {
-      width: 600px; height: 600px;
-      bottom: -150px; right: -100px;
-      background: radial-gradient(circle, rgba(56,189,248,0.13) 0%, transparent 70%);
-      animation: aurora-float-b 13s ease-in-out infinite;
-    }
-    .aurora-blob--3 {
-      width: 500px; height: 500px;
-      bottom: 20%; left: 35%;
-      background: radial-gradient(circle, rgba(168,85,247,0.14) 0%, transparent 70%);
-      animation: aurora-float-c 11s ease-in-out infinite;
-    }
-    @keyframes aurora-float-a {
-      0%, 100% { transform: translate(0, 0); }
-      33%       { transform: translate(30px, -20px); }
-      66%       { transform: translate(-15px, 25px); }
-    }
-    @keyframes aurora-float-b {
-      0%, 100% { transform: translate(0, 0); }
-      40%       { transform: translate(-25px, -30px); }
-      70%       { transform: translate(20px, 15px); }
-    }
-    @keyframes aurora-float-c {
-      0%, 100% { transform: translate(0, 0); }
-      50%       { transform: translate(20px, -25px); }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .aurora-blob { animation: none; }
-    }
+/* ── Info / contact cards ── */
+.info-card {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 10px; padding: 12px 16px;
+  display: flex; align-items: center; gap: 12px;
+  animation: card-flicker 7s ease-in-out infinite;
+}
+.info-card:nth-child(2){ animation-delay:2s }
+.info-card:nth-child(3){ animation-delay:4s }
+.info-icon {
+  width: 34px; height: 34px; border-radius: 8px; flex-shrink: 0;
+  background: rgba(57,255,133,.1);
+  border: 1px solid rgba(57,255,133,.25);
+  display: flex; align-items: center; justify-content: center;
+}
 
-    nav, section, footer {
-      position: relative;
-      z-index: 1;
-    }
+/* ── Project cards ── */
+.proj-card {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 10px; padding: 20px;
+  display: flex; flex-direction: column; gap: 12px;
+  position: relative; overflow: hidden;
+  animation: card-flicker 6s ease-in-out infinite;
+}
+.proj-card:nth-child(2){ animation-delay:1.2s }
+.proj-card:nth-child(3){ animation-delay:2.4s }
+.proj-card:nth-child(4){ animation-delay:3.6s }
+.proj-card::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:1px;
+  background: linear-gradient(90deg, transparent, rgba(57,255,133,.08), transparent);
+}
+.proj-num  { font-size: 9px; color: #2a2a2a; letter-spacing: 2px; }
+.proj-tag  {
+  font-size: 9px; color: var(--ac);
+  border: 1px solid rgba(57,255,133,.3);
+  background: rgba(57,255,133,.07);
+  padding: 2px 8px; border-radius: 3px;
+  letter-spacing: 1px; text-transform: uppercase;
+}
 
-    /* Scroll stagger reveal */
-    .stagger-child {
-      opacity: 0;
-      transform: translateY(22px);
-      transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
-                  transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .stagger-child.revealed {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .stagger-child { opacity: 1; transform: none; transition: none; }
-    }
+/* ── Skill badges ── */
+.skill-badge {
+  padding: 6px 14px; border-radius: 999px;
+  font-size: 12px; font-weight: 500;
+  background: var(--bg2); color: #fff;
+  border: 1px solid var(--border);
+  transition: border-color .2s;
+}
+.skill-badge:hover { border-color: var(--ac); }
+.skill-learning { color: var(--ac); border-color: rgba(57,255,133,.35); }
 
-    /* Hero stagger entrance */
-    .hero-item {
-      opacity: 0;
-      transform: translateY(18px);
-      animation: hero-fade-up 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
-    .hero-item:nth-child(2) { animation-delay: 0.1s; }
-    .hero-item:nth-child(3) { animation-delay: 0.25s; }
-    .hero-item:nth-child(4) { animation-delay: 0.4s; }
-    .hero-item:nth-child(5) { animation-delay: 0.58s; }
-    @keyframes hero-fade-up {
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .hero-item { opacity: 1; transform: none; animation: none; }
-    }
-    /* Button shimmer */
-    .btn-primary {
-      position: relative;
-      overflow: hidden;
-    }
-    .btn-primary::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -75%;
-      width: 50%;
-      height: 100%;
-      background: linear-gradient(
-        105deg,
-        transparent 30%,
-        rgba(255, 255, 255, 0.18) 50%,
-        transparent 70%
-      );
-      animation: shimmer-pass 4.5s ease-in-out infinite;
-      animation-delay: 1.2s;
-    }
-    @keyframes shimmer-pass {
-      0%   { left: -75%; opacity: 0; }
-      10%  { opacity: 1; }
-      50%  { left: 125%; opacity: 1; }
-      51%  { opacity: 0; }
-      100% { left: 125%; opacity: 0; }
-    }
+/* ── Stagger reveal ── */
+.stagger-child {
+  opacity: 0; transform: translateY(20px);
+  transition: opacity .55s cubic-bezier(.16,1,.3,1), transform .55s cubic-bezier(.16,1,.3,1);
+}
+.stagger-child.revealed { opacity:1; transform:translateY(0); }
+
+/* ── Hero entrance ── */
+.hero-item {
+  opacity: 0; transform: translateY(16px);
+  animation: hero-up .6s cubic-bezier(.16,1,.3,1) forwards;
+}
+.hero-item:nth-child(2){ animation-delay:.1s }
+.hero-item:nth-child(3){ animation-delay:.25s }
+.hero-item:nth-child(4){ animation-delay:.4s }
+
+@media (prefers-reduced-motion: reduce) {
+  .stagger-child { opacity:1; transform:none; transition:none; }
+  .hero-item     { opacity:1; transform:none; animation:none; }
+  .cyber-grid, .info-card, .proj-card { animation:none; }
+}
   </style>
 </head>
 <body>
