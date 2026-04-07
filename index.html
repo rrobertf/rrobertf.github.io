@@ -214,6 +214,34 @@
     @media (prefers-reduced-motion: reduce) {
       .hero-item { opacity: 1; transform: none; animation: none; }
     }
+    /* Button shimmer */
+    .btn-primary {
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-primary::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -75%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(
+        105deg,
+        transparent 30%,
+        rgba(255, 255, 255, 0.18) 50%,
+        transparent 70%
+      );
+      animation: shimmer-pass 4.5s ease-in-out infinite;
+      animation-delay: 1.2s;
+    }
+    @keyframes shimmer-pass {
+      0%   { left: -75%; opacity: 0; }
+      10%  { opacity: 1; }
+      50%  { left: 125%; opacity: 1; }
+      51%  { opacity: 0; }
+      100% { left: 125%; opacity: 0; }
+    }
   </style>
 </head>
 <body>
