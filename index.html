@@ -317,6 +317,7 @@ nav, section, footer { position: relative; z-index: 1; }
     <div class="hidden md:flex gap-8 text-xs font-medium tracking-widest uppercase" style="color:#fff;">
       <a href="#sobre-mi"    class="hover:text-white transition-colors">Sobre mí</a>
       <a href="#proyectos"   class="hover:text-white transition-colors">Proyectos</a>
+      <a href="#experiencia" class="hover:text-white transition-colors">Experiencia</a>
       <a href="#habilidades" class="hover:text-white transition-colors">Habilidades</a>
       <a href="#contacto"    class="hover:text-white transition-colors">Contacto</a>
     </div>
@@ -695,6 +696,24 @@ nav, section, footer { position: relative; z-index: 1; }
   }, { threshold: 0.08 });
 
   document.querySelectorAll('[data-stagger]').forEach(el => staggerObserver.observe(el));
+
+  // Timeline reveal
+  const tlWrapper = document.querySelector('.tl-wrapper');
+  if (tlWrapper) {
+    const timelineObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const wrapper = entry.target;
+        wrapper.classList.add('tl-line-revealed');
+        const items = [...wrapper.querySelectorAll('.tl-item')];
+        items.forEach((item, i) => {
+          setTimeout(() => item.classList.add('revealed'), i * 120);
+        });
+        timelineObserver.unobserve(wrapper);
+      });
+    }, { threshold: 0.08 });
+    timelineObserver.observe(tlWrapper);
+  }
 </script>
 </body>
 </html>
