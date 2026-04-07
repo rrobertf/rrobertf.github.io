@@ -209,6 +209,94 @@ nav, section, footer { position: relative; z-index: 1; }
   .hero-item     { opacity:1; transform:none; animation:none; }
   .cyber-grid, .info-card, .proj-card { animation:none; }
 }
+
+/* ── Timeline de Experiencia ── */
+@keyframes tl-dot-pop {
+  0%   { transform: translateX(-50%) scale(0); }
+  70%  { transform: translateX(-50%) scale(1.3); }
+  100% { transform: translateX(-50%) scale(1); }
+}
+
+.tl-wrapper {
+  position: relative;
+  padding-left: 32px;
+}
+.tl-wrapper::before {
+  content: '';
+  position: absolute;
+  left: 8px; top: 8px; bottom: 8px;
+  width: 1px;
+  background: linear-gradient(180deg, transparent 0%, var(--ac) 15%, var(--ac) 85%, transparent 100%);
+  opacity: 0.3;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.8s cubic-bezier(.16,1,.3,1);
+}
+.tl-wrapper.tl-line-revealed::before {
+  transform: scaleY(1);
+}
+.tl-group {
+  margin-bottom: 28px;
+}
+.tl-group-label {
+  font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
+  color: #444; margin-bottom: 12px;
+  display: flex; align-items: center; gap: 8px;
+}
+.tl-group-label::before {
+  content: ''; width: 14px; height: 1px; background: #333; display: inline-block;
+}
+.tl-item {
+  position: relative;
+  margin-bottom: 14px;
+  opacity: 0; transform: translateY(16px);
+  transition: opacity .5s cubic-bezier(.16,1,.3,1), transform .5s cubic-bezier(.16,1,.3,1);
+}
+.tl-item.revealed {
+  opacity: 1; transform: translateY(0);
+}
+.tl-item::before {
+  content: '';
+  position: absolute;
+  left: -24px; top: 14px;
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--ac);
+  box-shadow: 0 0 8px rgba(57,255,133,.6), 0 0 20px rgba(57,255,133,.2);
+  transform: translateX(-50%) scale(0);
+}
+.tl-item.revealed::before {
+  animation: tl-dot-pop 0.35s cubic-bezier(.16,1,.3,1) forwards;
+}
+.tl-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  display: flex; flex-direction: column; gap: 4px;
+  position: relative; overflow: hidden;
+  transition: border-color .2s;
+}
+.tl-card::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; bottom: 0; width: 2px;
+  background: linear-gradient(180deg, transparent, rgba(57,255,133,.4), transparent);
+  opacity: 0;
+  transition: opacity .3s;
+}
+.tl-card:hover { border-color: rgba(57,255,133,.25); }
+.tl-card:hover::before { opacity: 1; }
+.tl-period {
+  font-size: 9px; color: var(--ac); letter-spacing: 2px; text-transform: uppercase;
+}
+.tl-name { font-size: 13px; font-weight: 700; margin: 2px 0; }
+.tl-role  { font-size: 11px; color: #666; }
+
+@media (prefers-reduced-motion: reduce) {
+  .tl-item { opacity: 1; transform: none; transition: none; }
+  .tl-item::before { transform: translateX(-50%) scale(1); animation: none; }
+  .tl-wrapper::before { transform: scaleY(1); transition: none; }
+}
   </style>
 </head>
 <body>
