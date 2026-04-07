@@ -254,98 +254,71 @@ body {
 </section>
 
   <!-- PROYECTOS -->
-  <section id="proyectos" data-stagger class="py-24 px-6 md:px-16 max-w-5xl mx-auto">
-    <p class="stagger-child text-sm font-medium tracking-widest mb-2" style="color:var(--accent-light);">// proyectos</p>
-    <h2 style="font-size:clamp(32px,5vw,48px);font-weight:700;letter-spacing:-1px;" class="stagger-child mb-10">Lo que he construido</h2>
-    <div class="stagger-child grid md:grid-cols-2 gap-6">
+  <section id="proyectos" data-stagger class="relative py-24 px-6 md:px-16 max-w-5xl mx-auto overflow-hidden">
+  <div class="cyber-grid cyber-grid--dim"></div>
 
-      <div class="project-card flex flex-col">
-        <div class="project-card-inner">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-2">
-              <span class="text-xl">📦</span>
-              <h3 class="text-xl font-bold">Todo App</h3>
-            </div>
-            <a href="https://github.com/rrobertf/todo-api" target="_blank" rel="noopener"
-               class="text-sm px-3 py-1 rounded-full transition-colors hover:text-white"
-               style="color:var(--accent-light);border:1px solid var(--accent);">
-              GitHub ↗
-            </a>
-          </div>
-          <p style="color:var(--text-muted);">API REST con frontend completo. Permite crear, editar y eliminar tareas con persistencia en base de datos.</p>
-          <div class="flex flex-wrap gap-2 mt-auto">
-            <span class="tech-badge">Node.js</span>
-            <span class="tech-badge">Express</span>
-            <span class="tech-badge">SQLite</span>
-            <span class="tech-badge">REST API</span>
-          </div>
-        </div>
+  <p class="stagger-child eyebrow mb-10">Proyectos</p>
+  <div class="stagger-child grid md:grid-cols-2 gap-4">
+
+    <div class="proj-card">
+      <div class="flex items-center justify-between">
+        <span class="proj-num">001</span>
+        <a href="https://github.com/rrobertf/todo-api" target="_blank" rel="noopener" class="text-xs tracking-widest uppercase transition-colors hover:text-white" style="color:var(--ac);">GitHub ↗</a>
       </div>
-
-      <div class="project-card flex flex-col">
-        <div class="project-card-inner">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-2">
-              <span class="text-xl">⚙️</span>
-              <h3 class="text-xl font-bold">Organizador de Archivos</h3>
-            </div>
-            <a href="https://github.com/rrobertf/organizador" target="_blank" rel="noopener"
-               class="text-sm px-3 py-1 rounded-full transition-colors hover:text-white"
-               style="color:var(--accent-light);border:1px solid var(--accent);">
-              GitHub ↗
-            </a>
-          </div>
-          <p style="color:var(--text-muted);">Script de automatización que organiza archivos en carpetas por tipo, fecha o extensión.</p>
-          <div class="flex flex-wrap gap-2 mt-auto">
-            <span class="tech-badge">Bash</span>
-            <span class="tech-badge">Shell Script</span>
-            <span class="tech-badge">Terminal</span>
-          </div>
-        </div>
+      <h3 class="text-base font-bold">Todo App</h3>
+      <p class="text-xs leading-relaxed" style="color:var(--muted);">API REST con frontend completo. Permite crear, editar y eliminar tareas con persistencia en base de datos.</p>
+      <div class="flex flex-wrap gap-2 mt-auto">
+        <span class="proj-tag">Node.js</span>
+        <span class="proj-tag">Express</span>
+        <span class="proj-tag">SQLite</span>
+        <span class="proj-tag">REST API</span>
       </div>
-
-      <div class="project-card flex flex-col">
-        <div class="project-card-inner">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-2">
-              <span class="text-xl">🧮</span>
-              <h3 class="text-xl font-bold">Calculadora en C++</h3>
-            </div>
-            <span class="text-sm px-3 py-1 rounded-full" style="color:var(--text-muted);border:1px solid var(--border);">
-              Privado
-            </span>
-          </div>
-          <p style="color:var(--text-muted);">Aplicación de consola con operaciones aritméticas básicas y manejo de errores de entrada.</p>
-          <div class="flex flex-wrap gap-2 mt-auto">
-            <span class="tech-badge">C++</span>
-            <span class="tech-badge">OOP</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-card flex flex-col">
-        <div class="project-card-inner">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-2">
-              <span class="text-xl">🌐</span>
-              <h3 class="text-xl font-bold">Sitio Web Personal</h3>
-            </div>
-            <span class="text-sm px-3 py-1 rounded-full font-medium" style="color:#f59e0b;border:1px solid #f59e0b;">
-              En progreso
-            </span>
-          </div>
-          <p style="color:var(--text-muted);">Portafolio personal para mostrar proyectos, habilidades y experiencia como desarrollador.</p>
-          <div class="flex flex-wrap gap-2 mt-auto">
-            <span class="tech-badge">HTML</span>
-            <span class="tech-badge">CSS</span>
-            <span class="tech-badge">JavaScript</span>
-            <span class="tech-badge">Tailwind</span>
-          </div>
-        </div>
-      </div>
-
     </div>
-  </section>
+
+    <div class="proj-card">
+      <div class="flex items-center justify-between">
+        <span class="proj-num">002</span>
+        <a href="https://github.com/rrobertf/organizador" target="_blank" rel="noopener" class="text-xs tracking-widest uppercase transition-colors hover:text-white" style="color:var(--ac);">GitHub ↗</a>
+      </div>
+      <h3 class="text-base font-bold">Organizador de Archivos</h3>
+      <p class="text-xs leading-relaxed" style="color:var(--muted);">Script de automatización que organiza archivos en carpetas por tipo, fecha o extensión.</p>
+      <div class="flex flex-wrap gap-2 mt-auto">
+        <span class="proj-tag">Bash</span>
+        <span class="proj-tag">Shell Script</span>
+        <span class="proj-tag">Terminal</span>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="flex items-center justify-between">
+        <span class="proj-num">003</span>
+        <span class="text-xs tracking-widest uppercase" style="color:var(--muted);">Privado</span>
+      </div>
+      <h3 class="text-base font-bold">Calculadora en C++</h3>
+      <p class="text-xs leading-relaxed" style="color:var(--muted);">Aplicación de consola con operaciones aritméticas básicas y manejo de errores de entrada.</p>
+      <div class="flex flex-wrap gap-2 mt-auto">
+        <span class="proj-tag">C++</span>
+        <span class="proj-tag">OOP</span>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="flex items-center justify-between">
+        <span class="proj-num">004</span>
+        <span class="text-xs tracking-widest uppercase font-semibold" style="color:#f59e0b;">En progreso</span>
+      </div>
+      <h3 class="text-base font-bold">Sitio Web Personal</h3>
+      <p class="text-xs leading-relaxed" style="color:var(--muted);">Portafolio personal para mostrar proyectos, habilidades y experiencia como desarrollador.</p>
+      <div class="flex flex-wrap gap-2 mt-auto">
+        <span class="proj-tag">HTML</span>
+        <span class="proj-tag">CSS</span>
+        <span class="proj-tag">JavaScript</span>
+        <span class="proj-tag">Tailwind</span>
+      </div>
+    </div>
+
+  </div>
+</section>
 
   <!-- HABILIDADES -->
   <section id="habilidades" data-stagger class="py-24 px-6 md:px-16 max-w-5xl mx-auto">
