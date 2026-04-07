@@ -425,8 +425,8 @@ body {
 
   // Copy email
   function copyEmail() {
+    const btn = document.getElementById('copy-btn');
     navigator.clipboard.writeText('robertofeliciano2130@gmail.com').then(() => {
-      const btn = document.getElementById('copy-btn');
       btn.textContent = '¡Copiado!';
       btn.style.color = '#39ff85';
       btn.style.borderColor = 'rgba(57,255,133,.6)';
@@ -435,6 +435,9 @@ body {
         btn.style.color = '';
         btn.style.borderColor = '';
       }, 2000);
+    }).catch(() => {
+      btn.textContent = 'Error';
+      setTimeout(() => { btn.textContent = 'Copiar'; }, 2000);
     });
   }
 
