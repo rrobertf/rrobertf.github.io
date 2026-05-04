@@ -1,8 +1,8 @@
 # Roberto Feliciano — Portfolio
 
-Portafolio personal desarrollado con HTML, CSS, JavaScript y Tailwind CSS.
+Personal portfolio built with vanilla HTML, CSS, and JavaScript. No frameworks, no build step.
 
-🌐 **[Ver sitio en vivo](https://rrobertf.github.io)**
+**[rrobertf.github.io](https://rrobertf.github.io)**
 
 ---
 
@@ -11,27 +11,47 @@ Portafolio personal desarrollado con HTML, CSS, JavaScript y Tailwind CSS.
 ![HTML](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
 ![CSS](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
-![Tailwind](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white)
 
-## Características
+## Features
 
-- Diseño oscuro con acento verde neón
-- Animaciones al hacer scroll (IntersectionObserver)
-- Timeline interactivo de educación y experiencia
-- Totalmente responsivo
-- Un solo archivo `index.html` — sin dependencias de build
+- Dark / light mode with localStorage persistence
+- Editorial typography — Fraunces + Manrope + IBM Plex Mono
+- Cinematic hero animation (blur + translate reveal)
+- Custom magnetic cursor with contextual states
+- Command palette (`⌘K`) with fuzzy search
+- Project modals with 3D rotating cover art
+- Scroll-triggered reveals and timeline progress
+- Certifications section with live "In Progress" indicators
+- GitHub stats widget (live API fetch)
+- Availability banner + currently learning strip
+- Fully responsive
 
-## Proyectos incluidos
+## Projects
 
-| # | Proyecto | Tecnologías |
-|---|----------|-------------|
-| 001 | [Todo App](https://github.com/rrobertf/todo-api) | Node.js · Express · SQLite |
-| 002 | [Organizador de Archivos](https://github.com/rrobertf/organizador) | Bash · Shell Script |
-| 003 | Sitio Web Personal | HTML · CSS · JS · Tailwind |
-| 004 | [Generador de Contraseñas](https://github.com/rrobertf/generador-contrasenas) | Python |
-| 005 | [Web Scraper de Noticias](https://github.com/rrobertf/web-scraper) | Python · BeautifulSoup |
+| # | Project | Stack |
+|---|---------|-------|
+| 01 | [Todo App · REST API](https://github.com/rrobertf/todo-api) | Node.js · Express · SQLite |
+| 02 | [File Organizer · Bash CLI](https://github.com/rrobertf/organizador) | Bash · Shell |
+| 03 | [Portfolio · Frontend](https://rrobertf.github.io) | HTML · CSS · JavaScript |
+| 04 | [Password Generator](https://github.com/rrobertf/generador-contrasenas) | Python · CLI |
+| 05 | [News Web Scraper](https://github.com/rrobertf/web-scraper) | Python · BeautifulSoup |
+| 06 | [Secure Auth System](https://github.com/rrobertf/secure-auth-system) | React · Node.js · JWT · bcrypt |
 
-## Autor
+## Run locally
 
-**Roberto Feliciano** — Estudiante de Computer Science, UIPR Ponce  
+Static site — no build step required.
+
+```bash
+open index-v2.html
+```
+
+Or serve with any local server:
+
+```bash
+npx serve .
+```
+
+## Author
+
+**Roberto Feliciano** · CS Student · UIPR Ponce  
 [github.com/rrobertf](https://github.com/rrobertf)
