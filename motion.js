@@ -16,12 +16,12 @@ const PROJECTS = [
     bullets: ['Complete CRUD with Express REST routes', 'SQLite persistence without an ORM', 'Vanilla JS client consuming its own API', 'Server-side validation with real-time UI feedback'] },
   { id: 'org', num: '02', year: '2024', title: 'File Organizer · Bash CLI', kind: 'Automation',
     stack: ['Bash', 'CLI', 'Linux'],
-    desc: 'Bash CLI that sorts a cluttered Downloads folder by type, date, or extension. My first tool added to PATH — still runs daily.',
+    desc: 'Bash CLI that sorts a cluttered Downloads folder by file extension. My first tool added to PATH — still runs daily.',
     bg: 2, url: 'https://github.com/rrobertf/organizador',
-    long: 'I got tired of a Downloads folder full of loose files and wrote a script to fix it. It automatically sorts by extension and date, supports a dry-run mode so you can preview before committing, and logs every move. I added it to my PATH and it became part of my daily workflow.',
-    bullets: ['Configurable sorting rules by extension and date', 'Dry-run mode to preview changes before applying', 'Compatible with macOS and Linux', 'Full operation log for every run'] },
+    long: 'I got tired of a Downloads folder full of loose files and wrote a script to fix it. It automatically sorts by extension, supports a dry-run mode so you can preview before committing, and logs every move. I added it to my PATH and it became part of my daily workflow.',
+    bullets: ['Sorting into image, document, video, code, and other folders', 'Dry-run mode to preview changes before applying', 'Compatible with macOS and Linux', 'Console output for moved and skipped files'] },
   { id: 'site', num: '03', year: '2026', title: 'Portfolio · Frontend', kind: 'Web',
-    stack: ['HTML', 'JavaScript', 'Tailwind'],
+    stack: ['HTML', 'CSS', 'JavaScript'],
     desc: 'This site. A design and engineering sandbox — custom animations, command palette, dark/light mode, and responsive layout.',
     bg: 3, url: 'https://rrobertf.github.io/',
     long: 'The site you\'re looking at right now. I use it as a sandbox for modern CSS, motion design, and UX patterns. Every new technique I learn ends up here before it goes anywhere else.',
@@ -30,25 +30,25 @@ const PROJECTS = [
     stack: ['Python', 'CLI'],
     desc: 'Python CLI for generating strong passwords with configurable rules. Built because I needed a reliable daily tool.',
     bg: 4, url: 'https://github.com/rrobertf/generador-contrasenas',
-    long: 'I needed unique strong passwords for every account and didn\'t want to rely on a third-party tool I didn\'t understand. I built a minimal Python CLI with Unix-style flags, entropy measurement, and a bulk mode for generating multiple passwords at once.',
-    bullets: ['Unix-style flags (--len, --no-symbols, --no-ambiguous)', 'Entropy calculation in bits', 'Bulk mode for generating multiple passwords', 'Option to copy directly to clipboard'] },
+    long: 'I needed unique strong passwords for every account and didn\'t want to rely on a third-party tool I didn\'t understand. I built an interactive Python CLI with configurable length, digits, and symbols. It uses system-backed cryptographic randomness and displays passwords without saving them to disk.',
+    bullets: ['Interactive length, digits, and symbols options', 'Cryptographic randomness with Python secrets', 'Includes every selected character category', 'No automatic plaintext password history'] },
   { id: 'auth', num: '06', year: '2026', title: 'Secure Auth System', kind: 'Full-Stack',
     stack: ['React', 'Node.js', 'JWT', 'bcrypt', 'SQLite'],
     desc: 'Full-stack authentication system — JWT tokens, bcrypt password hashing, protected routes, and a React dashboard.',
     bg: 6, url: 'https://github.com/rrobertf/secure-auth-system',
-    long: 'A complete authentication flow built from scratch. The Express backend handles registration, login, token verification, and user profiles using JWT and bcrypt. The React frontend manages auth state, persists tokens in localStorage, and renders a protected dashboard. Built to understand security fundamentals firsthand.',
+    long: 'A complete authentication flow built from scratch. The Express backend handles registration, login, token verification, and user profiles using JWT and bcrypt. The React frontend manages auth state, keeps tokens in tab-scoped sessionStorage, and renders a protected dashboard. Built to understand security fundamentals firsthand.',
     bullets: [
-      'JWT-based auth with 7-day expiry and Bearer token headers',
+      'JWT-based auth with 1-hour expiry and Bearer token headers',
       'bcrypt password hashing with salt rounds',
       'Protected REST routes with middleware token verification',
       'React frontend with login, register, and dashboard views',
     ] },
   { id: 'news', num: '05', year: '2025', title: 'News Web Scraper', kind: 'Automation',
     stack: ['Python', 'BeautifulSoup', 'Automation'],
-    desc: 'Python scraper that pulls headlines from multiple sources, deduplicates them, and delivers a clean morning digest in the terminal.',
+    desc: 'Python scraper that extracts the top 20 Hacker News stories and saves their titles, links, and scores to a text file.',
     bg: 5, url: 'https://github.com/rrobertf/web-scraper',
-    long: 'Instead of opening five browser tabs every morning, I wrote a Python scraper that pulls headlines from several sources, strips duplicates, and shows a clean digest right in the terminal. It caches results locally so it\'s fast and doesn\'t hammer the servers.',
-    bullets: ['HTML extraction with BeautifulSoup', 'Deduplication by headline similarity', 'Local cache to avoid repeat requests', 'Colorized CLI output with source labels'] },
+    long: 'A Python script that extracts titles, links, and scores for the top 20 Hacker News stories and saves the results to a text file.',
+    bullets: ['HTML extraction with BeautifulSoup', 'Top 20 Hacker News stories', 'Story titles, links, and scores', 'Text file output'] },
 ];
 
 // ── Preloader ──────────────────────────────────────────────────
@@ -444,11 +444,12 @@ document.getElementById('contactForm').addEventListener('submit', e => {
   showToast('Opening mail client…');
 });
 
-// ── Resume placeholder ─────────────────────────────────────────
+// ── Request resume ─────────────────────────────────────────
 document.querySelectorAll('#resumeLink, .resume-trigger').forEach(el => {
   el.addEventListener('click', e => {
     e.preventDefault();
-    showToast('Resume coming soon — check back soon.');
+    window.location.href = 'mailto:robertofeliciano2130@gmail.com?subject=Resume%20request';
+    showToast('Opening mail client…');
   });
 });
 

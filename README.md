@@ -18,7 +18,7 @@ Personal portfolio built with vanilla HTML, CSS, and JavaScript. No frameworks, 
 - Editorial typography — Fraunces + Manrope + IBM Plex Mono
 - Cinematic hero animation (blur + translate reveal)
 - Custom magnetic cursor with contextual states
-- Command palette (`⌘K`) with fuzzy search
+- Command palette (`⌘K`) with text search
 - Project modals with 3D rotating cover art
 - Scroll-triggered reveals and timeline progress
 - Certifications section with live "In Progress" indicators
@@ -42,13 +42,25 @@ Personal portfolio built with vanilla HTML, CSS, and JavaScript. No frameworks, 
 Static site — no build step required.
 
 ```bash
-open index-v2.html
+open index.html
 ```
 
 Or serve with any local server:
 
 ```bash
 npx serve .
+```
+
+## Contact and checks
+
+CV buttons open an email request; no resume PDF is published in this repository.
+LinkedIn remains informational until a verified profile URL is available.
+The contact form opens the visitor's email application; it does not send messages through a server.
+Project descriptions match the linked projects; the accompanying maintenance PRs must be merged for the new security details to apply.
+
+```bash
+python3 -m unittest discover -s tests -v
+node --check motion.js
 ```
 
 ## Author

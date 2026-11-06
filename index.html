@@ -1004,6 +1004,7 @@
     padding: 4px 10px; border-radius: 999px;
     border: 1px solid var(--line2); font-size: 10px; color: var(--ink2);
   }
+  button.social-link { width: 100%; background: transparent; color: inherit; font: inherit; text-align: left; cursor: pointer; border-left: 0; border-right: 0; }
 </style>
 </head>
 <body>
@@ -1058,7 +1059,7 @@
     <div class="btn-row">
       <a href="#projects" class="btn btn-primary magnetic" data-cur><span class="label">View projects</span><span class="arrow">↗</span></a>
       <a href="#contact" class="btn btn-ghost magnetic" data-cur><span class="label">Get in touch</span><span class="arrow">→</span></a>
-      <a href="#" id="resumeLink" class="btn btn-ghost magnetic" data-cur><span class="label">Download CV</span><span class="arrow">↓</span></a>
+      <button type="button" id="resumeLink" class="btn btn-ghost magnetic" data-cur><span class="label">Request CV</span><span class="arrow">→</span></button>
     </div>
   </div>
 
@@ -1311,12 +1312,12 @@
         <a class="social-link" href="https://github.com/rrobertf" target="_blank" rel="noopener" data-cur>
           <span>GitHub</span><span class="meta">@rrobertf →</span>
         </a>
-        <a class="social-link" href="#" data-cur>
-          <span>LinkedIn</span><span class="meta">coming soon →</span>
-        </a>
-        <a class="social-link resume-trigger" href="#" data-cur>
-          <span>Resume / CV</span><span class="meta">download →</span>
-        </a>
+        <div class="social-link">
+          <span>LinkedIn</span><span class="meta">coming soon</span>
+        </div>
+        <button type="button" class="social-link resume-trigger" data-cur>
+          <span>Resume / CV</span><span class="meta">request by email →</span>
+        </button>
       </div>
     </div>
   </div>
